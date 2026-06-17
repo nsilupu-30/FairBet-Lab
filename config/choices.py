@@ -27,6 +27,26 @@ class TipoCuenta(models.TextChoices):
     CASA = "casa", "Casa de Apuestas"
     APUESTAS_PENDIENTES = "apuestas_pendientes", "Apuestas Pendientes"
     BONOS = "bonos", "Bonos"
+    BONOS_USUARIO = "bonos_usuario", "Bonos del Usuario"
+
+
+class TipoBono(models.TextChoices):
+    BIENVENIDA = "bienvenida", "Bono de Bienvenida"
+    RECARGA = "recarga", "Bono de Recarga"
+    MANUAL = "manual", "Bono Manual (Operador)"
+
+
+class EstadoBono(models.TextChoices):
+    ACTIVO = "activo", "Activo"
+    COMPLETADO = "completado", "Completado"
+    EXPIRADO = "expirado", "Expirado"
+    REVOCADO = "revocado", "Revocado por Abuso"
+
+
+class TipoAlertaAbuso(models.TextChoices):
+    RISK_FREE = "risk_free", "Apuesta Sin Riesgo"
+    MATCHED_BETTING = "matched_betting", "Matched Betting"
+    ARBITRAGE = "arbitrage", "Arbitraje"
 
 
 class Direccion(models.TextChoices):
@@ -53,5 +73,31 @@ class EstadoApuesta(models.TextChoices):
 class TipoApuesta(models.TextChoices):
     SIMPLE = "SIMPLE", "Simple"
     COMBINADA = "COMBINADA", "Combinada"
+
+
+class TipoAccionAuditoria(models.TextChoices):
+    BET_CREATED = 'BET_CREATED', 'Apuesta Creada'
+    BET_SETTLED = 'BET_SETTLED', 'Apuesta Liquidada'
+    WALLET_MOVEMENT = 'WALLET_MOVEMENT', 'Movimiento de Wallet'
+    ODDS_CHANGED = 'ODDS_CHANGED', 'Cambio de Cuotas'
+
+
+class ReglaActividadSospechosa(models.TextChoices):
+    MULTIPLE_ACCOUNTS_SAME_IP = 'MULTIPLE_ACCOUNTS_SAME_IP', 'Misma IP con múltiples cuentas'
+    IDENTICAL_GROUP_BETTING = 'IDENTICAL_GROUP_BETTING', 'Patrón de apuestas idénticas en grupo'
+    IMMEDIATE_DEPOSIT_CASHOUT = 'IMMEDIATE_DEPOSIT_CASHOUT', 'Depósito inmediato seguido de Cash-Out'
+
+
+class EstadoActividadSospechosa(models.TextChoices):
+    PENDING = 'PENDING', 'Pendiente de Revisión'
+    REVIEWED = 'REVIEWED', 'Revisado / Confirmado'
+    DISMISSED = 'DISMISSED', 'Descartado / Falso Positivo'
+
+
+class SeveridadActividadSospechosa(models.TextChoices):
+    LOW = 'LOW', 'Baja'
+    MEDIUM = 'MEDIUM', 'Media'
+    HIGH = 'HIGH', 'Alta'
+
 
 
